@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,7 +15,7 @@ public class Note extends Main {
 	
 	private int size;
 	private Color color;
-	private String message;
+	private String message = "Help";
 	private TextField field;
 	
 	protected Note() {}
@@ -25,13 +26,8 @@ public class Note extends Main {
 		m = message;
 		
 		field = new TextField();
-		/*
-		try {
-			VBox root = (VBox)FXMLLoader.load(getClass().getResource("Sample.fxml"));
-			Scene scene = new Scene(root,super.screenWidth,super.screenHeight);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
+		
+		
 	}
 	
 	public void setColor(Color c) {
