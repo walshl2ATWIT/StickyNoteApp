@@ -1,14 +1,9 @@
 package application;
 
-import java.util.ArrayList;
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -28,9 +23,12 @@ public class SampleController extends Main {
     
     public void initialize() {
     	notes = SavingNotes.getNotesFromFile();
-    	for (int i = 0; i < notes.size(); i++) {
-			gridPane.add(Note.createTextArea(notes.get(i)), i % 3, i / 3);
-		}
+    	if (notes.isEmpty() == false) {
+	    	for (int i = 0; i < notes.size(); i++) {
+				gridPane.add(Note.createTextArea(notes.get(i)), i % 3, i / 3);
+			}
+    	}
+    	System.out.println("--Notes loaded--");
     }
 
     //creates a note and adds it to the array of notes
@@ -42,7 +40,7 @@ public class SampleController extends Main {
     			gridPane.addRow(gridPane.getRowCount());
     		}
     		Note note = new Note(20, Color.LIGHTPINK, noteMessage.getText());
-    		super.notes.add(note);
+    		Main.notes.add(note);
     		System.out.println(noteMessage.getText());
     		gridPane.add(Note.createTextArea(note), (notes.size() - 1) % 3, (notes.size() - 1) / 3);
     	}

@@ -6,8 +6,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javafx.scene.layout.GridPane;
-
 public class SavingNotes {
 	
 	protected static File file = new File("savedNotes.txt");
@@ -36,25 +34,15 @@ public class SavingNotes {
 	public static ArrayList<Note> getNotesFromFile() {
 		ArrayList<Note> a = new ArrayList<Note>();
 		try (Scanner in = new Scanner(file)) {
-			String[] arr = in.nextLine().split(";;;");
-			for (int i = 0; i < arr.length; i++) {
-				a.add(new Note(arr[i]));
+			if (in.hasNext() == true) {
+				String[] arr = in.nextLine().split(";;;");
+				for (int i = 0; i < arr.length; i++) {
+					a.add(new Note(arr[i]));
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return a;
-	}
-	
-	private static boolean checkEmpty() {
-		boolean isEmpty = true;
-		try (Scanner in = new Scanner(file)) {
-			if (!in.nextLine().contains(";;;")) {
-				isEmpty = false;
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return isEmpty;
 	}
 }
