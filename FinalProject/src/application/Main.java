@@ -27,6 +27,7 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Notes");
 		primaryStage.show();
+		primaryStage.setResizable(false);
 	}
 	
 	public static void main(String[] args) {

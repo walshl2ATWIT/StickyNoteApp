@@ -55,9 +55,4 @@ public class Note extends Main {
 		area.setEditable(false);
 		return area;
 	}
-	
-	public String toString() {
-		return message;
-	}
-
 }
