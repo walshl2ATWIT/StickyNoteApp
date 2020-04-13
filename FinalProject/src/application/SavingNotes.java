@@ -57,18 +57,4 @@ public class SavingNotes {
 		}
 		return isEmpty;
 	}
-	
-	public static void loadNotes(GridPane g) {
-		if (checkEmpty() == false) {
-			try {
-				ArrayList<Note> a = getNotesFromFile();
-				for (int i = 0; i < a.size(); i++) {
-					g.add(Note.createTextArea(a.get(i)), 0, 0);
-				}
-				System.out.println("--Notes loaded--");
-			} catch (Exception e) {
-				System.out.println("--Failed to load notes--");
-			}
-		}
-	}
 }

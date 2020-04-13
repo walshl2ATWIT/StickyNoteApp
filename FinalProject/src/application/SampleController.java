@@ -27,8 +27,10 @@ public class SampleController extends Main {
     public GridPane gridPane;
     
     public void initialize() {
-    	//notes = SavingNotes.getNotesFromFile();
-    	//SavingNotes.loadNotes(gridPane);
+    	notes = SavingNotes.getNotesFromFile();
+    	for (int i = 0; i < notes.size(); i++) {
+			gridPane.add(Note.createTextArea(notes.get(i)), i % 3, i / 3);
+		}
     }
 
     //creates a note and adds it to the array of notes
