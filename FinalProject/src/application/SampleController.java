@@ -25,6 +25,11 @@ public class SampleController extends Main {
     
     @FXML
     public GridPane gridPane;
+    
+    public void initialize() {
+    	//notes = SavingNotes.getNotesFromFile();
+    	//SavingNotes.loadNotes(gridPane);
+    }
 
     //creates a note and adds it to the array of notes
     @FXML
@@ -37,7 +42,7 @@ public class SampleController extends Main {
     		Note note = new Note(20, Color.LIGHTPINK, noteMessage.getText());
     		super.notes.add(note);
     		System.out.println(noteMessage.getText());
-    		gridPane.add(note.createTextArea(note), (notes.size() - 1) % 3, (notes.size() - 1) / 3);
+    		gridPane.add(Note.createTextArea(note), (notes.size() - 1) % 3, (notes.size() - 1) / 3);
     	}
     	noteMessage.clear();
 	}
@@ -55,7 +60,7 @@ public class SampleController extends Main {
     			gridPane.getChildren().clear();
     			
     			for (int i = 0; i < notes.size(); i++) {
-    				gridPane.add(notes.get(i).createTextArea(notes.get(i)), i % 3, i / 3);
+    				gridPane.add(Note.createTextArea(notes.get(i)), i % 3, i / 3);
     			}
     		}
     	}

@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 
@@ -26,11 +29,17 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Notes");
 		primaryStage.show();
-		
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
 
+	}
+	
+	@Override
+	public void stop() {
+		System.out.println("--Exiting program--");
+		SavingNotes.saveNotes(notes);
+		Platform.exit();
 	}
 }

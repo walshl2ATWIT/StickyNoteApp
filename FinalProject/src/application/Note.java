@@ -23,6 +23,10 @@ public class Note extends Main {
 	
 	protected Note() {}
 	
+	protected Note(String m) {
+		message = m;
+	}
+	
 	protected Note(int s, Color c, String m) {
 		size = s;
 		color = c;
@@ -54,14 +58,17 @@ public class Note extends Main {
 	}
 	
 	//creates the note text area
-	public TextArea createTextArea(Note n) {
+	public static TextArea createTextArea(Note n) {
 		TextArea area = new TextArea(n.getMessage());
 		area.setWrapText(true);
 		area.setStyle("-fx-control-inner-background:white");
 		area.setFont(Font.font(25));
-		area.resize(size, size);
 		area.setEditable(false);
 		return area;
+	}
+	
+	public String toString() {
+		return message;
 	}
 
 }
